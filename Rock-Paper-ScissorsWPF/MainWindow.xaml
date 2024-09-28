@@ -5,8 +5,49 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Rock_Paper_ScissorsWPF"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+             Title="MainWindow" Height="388" Width="457" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ControlTemplate x:Key="NoMouseOverButtonTemplate"   
+             TargetType="Button">
+            <Border Background="{TemplateBinding Background}"  
+      BorderBrush="{TemplateBinding BorderBrush}"  
+      BorderThickness="{TemplateBinding BorderThickness}">
+                <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"  
+                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+            </Border>
+
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsEnabled"  
+         Value="False">
+                    <Setter Property="Background"  
+          Value="{x:Static SystemColors.ControlLightBrush}" />
+                    <Setter Property="Foreground"  
+          Value="{x:Static SystemColors.GrayTextBrush}" />
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+    </Window.Resources>
     <Grid>
-        
+        <Button Name="bt_Stone"  VerticalAlignment="Top" Height="72" Margin="75,65,319,0" Template="{StaticResource NoMouseOverButtonTemplate}" BorderBrush="{x:Null}" Click="bt_Stone_Click" Visibility="Hidden">
+            <Button.Background>
+                <ImageBrush ImageSource="/kamen.png"/>
+            </Button.Background>
+        </Button>
+        <Button Name="bt_Scissors"  VerticalAlignment="Top" Height="72"  Margin="266,65,128,0"  Template="{StaticResource NoMouseOverButtonTemplate}" BorderBrush="{x:Null}" Click="bt_Scissors_Click" Visibility="Hidden">
+            <Button.Background>
+                <ImageBrush ImageSource="/nojnitsi.png"/>
+            </Button.Background>
+
+        </Button>
+        <Button Name="bt_Paper"  VerticalAlignment="Top" Height="72"  Margin="166,65,229,0"  Template="{StaticResource NoMouseOverButtonTemplate}" BorderBrush="{x:Null}" Click="bt_Paper_Click" Visibility="Hidden">
+            <Button.Background>
+                <ImageBrush ImageSource="/bumaga.png"/>
+            </Button.Background>
+
+        </Button>
+        <Button Name="bt_start" Content="Начать"  HorizontalAlignment="Left" Margin="153,186,0,0" VerticalAlignment="Top" Height="37" Width="98" Click="bt_start_Click"/>
+        <Label x:Name="lb_you" Content="0" HorizontalAlignment="Left" Margin="180,274,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lb_ii" Content=" 0" HorizontalAlignment="Left" Margin="202,274,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.215,0.351"/>
+        <Label Content=" : " HorizontalAlignment="Left" Margin="192,274,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>
